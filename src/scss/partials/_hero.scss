@@ -1,0 +1,8 @@
+.hero {
+  min-height: 100vh;
+  padding: 14vh 0;
+
+  @include mq {
+    padding-top: 20vh;
+  };
+}

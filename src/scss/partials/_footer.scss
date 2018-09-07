@@ -1,0 +1,38 @@
+.footer {
+  text-align: center;
+  padding: 6rem 0.5rem 3rem;
+  background: var(--bg-color-darken);
+  color: var(--text-color);
+
+  &__text {
+    font-size: 1.5rem;
+    padding-bottom: 3rem;
+
+    @include mq {
+      font-size: 2rem;
+    };
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+    padding-bottom: 1rem;
+  }
+
+  &__copyright {
+    display: inline;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--accent-color);
+    font-size: 0.85rem;
+
+    @include mq {
+      font-size: 1.2rem;
+    };
+
+    &--color {
+      color: var(--accent-color);
+    }
+  }
+
+}

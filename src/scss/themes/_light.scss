@@ -1,0 +1,10 @@
+.light {
+  :root & {
+    --bg-color: #{$light-bg};
+    --bg-color-lighten: #{$light-bg-lighten};
+    --bg-color-darken: #{$light-bg-darken};
+    --text-color: #{$light-text};
+    --accent-color: #{$light-accent};
+    --accent-color-hover: #{$dark-accent}
+  }
+}

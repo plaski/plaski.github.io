@@ -1,0 +1,173 @@
+.works {
+  padding: 4vh 0 14vh;
+}
+
+.projects {
+  padding: 0 5px;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 90rem;
+
+  @include mq {
+    padding: 0 1rem;
+  };
+
+  @include mq(90rem) {
+    margin: 0 4rem;
+    padding: 0;
+  };
+
+  &__item {
+    order: 2;
+    flex: 0 1 calc(50% - 5px);
+    margin: 2.5px;
+    position: relative;
+    overflow: hidden;
+
+    @include mq {
+      flex: 0 1 calc(33% - 5px);
+    };
+
+    &.featured {
+      flex: 0 1 100%;
+
+      @include mq {
+        order: 2;
+        flex: 0 1 calc(33% - 5px);
+      };
+    }
+
+    &:hover .projects__desc {
+      top: 0;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+  }
+
+  &__desc {
+    position: absolute;
+    top: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--accent-color);
+    opacity: $bg-opacity;
+    display: flex;
+    flex-direction: column;
+    @include ease(top);
+  }
+
+  &__title {
+    padding: 0.5rem;
+    font-weight: $fw-n;
+    letter-spacing: 2px;
+    font-size: 1rem;
+    margin-bottom: auto;
+
+    @include mq {
+      padding: 1.5rem;
+      font-size: 1.2rem;
+    };
+
+    .featured & {
+      font-size: 2rem;
+
+      @include mq {
+        font-size: 2.4rem;
+      };
+    }
+  }
+
+  &__text {
+    display: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+
+    @include mq {
+      padding: 1.5rem;
+      font-size: 1.2rem;
+      max-width: 80%;
+    };
+
+    .featured & {
+      margin-bottom: 2rem;
+      display: block;
+    }
+  }
+
+  &__btn-container {
+    display: flex;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.3rem;
+    width: 50%;
+    color: var(--text-color);
+    background: var(--accent-color);
+    @include ease(background, 150ms);
+
+    &:hover {
+      background: var(--accent-color-hover);
+    }
+
+    .featured & {
+      padding: 0.5rem;
+    }
+
+    &:first-of-type {
+      border-right: 1px solid var(--text-color);
+    }
+  }
+
+  &__icon {
+    display: inline-block;
+    height: 1.4rem;
+    width: 1.4rem;
+    margin-right: 0;
+    stroke: transparent;
+    fill: currentColor;
+
+    .featured & {
+      height: 2rem;
+      width: 2rem;
+      margin-right: 1rem;
+    }
+  }
+
+  &__icon-desc {
+    display: none;
+    font-size: 1.2rem;
+
+    .featured & {
+      display: inline;
+    }
+  }
+}
+
+@supports (display: grid) {
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5px;
+
+    @include mq {
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+    };
+
+    &__item {
+      margin: 0;
+
+      &.featured {
+        grid-column: 1 / span 2;
+        grid-row: 1 / span 2;
+      }
+    }
+  }
+}

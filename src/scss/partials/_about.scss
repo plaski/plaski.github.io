@@ -1,0 +1,148 @@
+.about {
+  padding: 4vh 0 14vh;
+}
+
+.bio {
+  display: flex;
+  flex-direction: column;
+
+  @include mq {
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 90rem;
+  };
+
+  @include mq(90rem) {
+    margin: 0 4rem;
+  };
+
+  &__img {
+    margin: auto;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0px 0px 50px 20px var(--bg-color-darken);
+
+    @include mq {
+      margin: 0 auto 35px;
+      flex: 0 0 auto;
+    };
+  }
+
+  &__text {
+    margin: 25px 1rem;
+    text-align: justify;
+    line-height: 1.5rem;
+
+    @include mq {
+      width: calc(100% - 200px - 4rem);
+      max-width: 64%;
+      margin: 0 1rem 35px;
+    };
+  }
+}
+
+.skills {
+  background: var(--bg-color-lighten);
+  padding: 0.5rem;
+  margin-bottom: 25px;
+  border-bottom: 5px solid var(--accent-color);
+
+  @include mq {
+    flex: 1 1 auto;
+    min-width: 30%;
+    margin-left: 15px;
+  };
+
+  &--1 {
+
+    @include mq {
+      margin-left: 0;
+    };
+  }
+
+  &__title {
+    font-size: 1.4rem;
+    font-weight: $fw-n;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--bg-color);
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    margin: 0 0 0.3rem 1.5rem;
+    position: relative;
+    margin-left: 0.5rem;
+    list-style: none;
+    text-align: left;
+    font-size: 1rem;
+
+    &::before {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: var(--accent-color);
+      height: 5px;
+      width: 5px;
+      left: -0.5rem;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+@supports (display: grid) {
+  .bio {
+    display: grid;
+    grid-gap: 25px;
+    grid-template-areas:
+    'bioimg'
+    'biotext'
+    'skills1'
+    'skills2'
+    'skills3';
+    grid-template-columns: 1fr;
+
+    @include mq {
+      grid-gap: 15px;
+      grid-row-gap: 35px;
+      grid-template-areas:
+      'bioimg biotext biotext'
+      'skills1 skills2 skills3';
+      grid-template-columns: repeat(3, 1fr);
+    };
+
+    &__img {
+      grid-area: bioimg;
+      margin: auto;
+    }
+
+    &__text {
+      grid-area: biotext;
+      margin: 0.5rem 1rem;
+      width: auto;
+      max-width: none;
+    }
+  }
+
+  .skills {
+    margin: 0;
+
+    &--1 {
+      grid-area: skills1;
+    }
+
+    &--2 {
+      grid-area: skills2;
+    }
+
+    &--3 {
+      grid-area: skills3;
+    }
+  }
+}

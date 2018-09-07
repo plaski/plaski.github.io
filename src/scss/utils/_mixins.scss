@@ -1,0 +1,32 @@
+@mixin background {
+  background: $bg-image;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+
+  &::after {
+    background: var(--bg-color);
+    opacity: $bg-opacity;
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+  }
+}
+
+@mixin ease($property, $duration: 250ms) {
+  transition: $property $duration ease-in-out;
+}
+
+@mixin easeCustom($property) {
+  transition: $property 500ms cubic-bezier(0.72,-0.54, 0.28, 1.54);
+}
+
+@mixin mq($width: 50em) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
